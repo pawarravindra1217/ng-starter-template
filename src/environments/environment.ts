@@ -4,6 +4,7 @@
 
 export const environment = {
   production: false,
+  serverBaseUrl: 'https://dummy.restapiexample.com/api/v1/',
   firebaseConfig: {
     apiKey: "AIzaSyDGkseI8NDkns7VrFgDbhqJsi-wzL3Jaas",
     authDomain: "social-login-ec4be.firebaseapp.com",
