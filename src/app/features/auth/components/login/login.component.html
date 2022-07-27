@@ -10,14 +10,14 @@
         </div>
         <!-- Calling SignIn Api from AuthService -->
         <div class="formGroup">
-          <input type="button" class="btn btnPrimary" value="Log in" (click)="authService.SignIn(userName.value, userPassword.value)">
+          <input type="button" class="btn btnPrimary" value="Log in" (click)="_authService.SignIn(userName.value, userPassword.value)">
         </div>
         <div class="formGroup">
           <span class="or"><span class="orInner">Or</span></span>
         </div>
         <!-- Calling GoogleAuth Api from AuthService -->
         <div class="formGroup">
-          <button type="button" class="btn googleBtn" (click)="authService.GoogleAuth()">
+          <button type="button" class="btn googleBtn" (click)="_authService.GoogleAuth()">
             <i class="fab fa-google-plus-g"></i>
             Log in with Google
           </button>

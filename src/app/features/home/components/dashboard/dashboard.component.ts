@@ -14,7 +14,7 @@ import { HomeStringConstants } from '../../utils/home-string-constants';
 export class DashboardComponent implements OnInit {
   employees: Employee[] | undefined;
   ASSETS_LINK: any = HomeStringConstants.ASSETS;
-  constructor(public authService: AuthenticationService, private httpService: HttpService<Employee>) { }
+  constructor(public _authService: AuthenticationService, private httpService: HttpService<Employee>) { }
 
   ngOnInit(): void {
     this.getEmployees();

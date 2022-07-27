@@ -15,7 +15,7 @@ export class RegisterComponent implements OnInit {
   });
   errorMessage: string = '';
   successMessage: string = '';
-  constructor(public authService: AuthenticationService) { }
+  constructor(public _authService: AuthenticationService) { }
 
   ngOnInit(): void {
   }
