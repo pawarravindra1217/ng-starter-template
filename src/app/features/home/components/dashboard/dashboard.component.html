@@ -1,7 +1,7 @@
 <!-- Top navigation -->
 <nav class="navbar navbar-dark fixed-top bg-dark flex-md-nowrap p-0 shadow">
     <a class="navbar-brand col-sm-3 col-md-2 mr-0">
-      <img class="brand-logo" src="assets/logo-positronx-white.svg" alt="positronX.io Logo">
+      <img class="brand-logo" src="{{ASSETS_LINK.ANGULAR_LOGO}}" alt="Angular Starter Logo">
     </a>
   </nav>
   <!-- Sidebar navigation -->
@@ -34,8 +34,9 @@
           <div class="row" *ngIf="authService.userData as user">
             <div class="col-md-12">
               <div class="media">
-                <img class="align-self-start mr-5 img-thumbnail rounded-circle" src="{{(user.photoURL) ? user.photoURL : '/assets/dummy-user.png'}}"
-                  alt="{{user.displayName}}">
+                <img class="align-self-start mr-5 img-thumbnail rounded-circle" 
+                     src="{{ASSETS_LINK.DUMMY_USER}}"
+                     alt="{{user.displayName}}">
                 <div class="media-body">
                   <h1>Hello: <strong>{{(user.displayName) ? user.displayName : 'User'}}</strong></h1>
                   <p>User ID: <strong>{{user.uid}}</strong></p>
@@ -48,4 +49,12 @@
         </div>
       </main>
     </div>
+  </div>
+
+
+  <div *ngFor="let employee of employees">
+    <label>Id: {{employee.id}}</label>
+    <label>Name: {{employee.employee_name}}</label>
+    <label>Age: {{employee.employee_age}}</label>
+    <label>Salary: {{employee.employee_salary}}</label>
   </div>
