@@ -1,10 +1,12 @@
 import { Injectable, NgZone } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { AngularFirestore, AngularFirestoreDocument } from '@angular/fire/compat/firestore';
-import { User } from '../models/user';
+import { UserInterface } from '../interfaces/user-interface';
 import * as auth from 'firebase/auth';
 import { LocalStorageService } from 'src/app/core/services/local-storage.service';
 import { Router } from '@angular/router';
+import { AuthStringConstants } from '../utils/auth-string-constants';
+import { LoginDataInterface } from '../interfaces/login-data-interface';
 
 @Injectable({
   providedIn: 'root'
@@ -22,18 +24,18 @@ export class AuthenticationService {
       this._afAuth.authState.subscribe((user) => {
         if(user) {
           this.userData = user;
-          localStorage.setItem('user', JSON.stringify(this.userData));
-          JSON.parse(localStorage.getItem('user')!);
+          localStorage.setItem(AuthStringConstants.LOCAL_STORAGE_CONSTANTS.USER, JSON.stringify(this.userData));
+          JSON.parse(localStorage.getItem(AuthStringConstants.LOCAL_STORAGE_CONSTANTS.USER)!);
         } else {  
-          localStorage.setItem('user', 'null');
-          JSON.parse(localStorage.getItem('user')!);
+          localStorage.setItem(AuthStringConstants.LOCAL_STORAGE_CONSTANTS.USER, 'null');
+          JSON.parse(localStorage.getItem(AuthStringConstants.LOCAL_STORAGE_CONSTANTS.USER)!);
         }
       })
     }
   // Sign in with email/password
-  SignIn(email: string, password: string) {
+  SignIn(body: LoginDataInterface) {
     return this._afAuth
-      .signInWithEmailAndPassword(email, password)
+      .signInWithEmailAndPassword(body.email, body.password)
       .then((result) => {
         this._ngZone.run(() => {
           this._router.navigate(['/features/home/dashboard']);
@@ -45,9 +47,9 @@ export class AuthenticationService {
       });
   }
   // Sign up with email/password
-  SignUp(email: string, password: string) {
+  SignUp(body: LoginDataInterface) {
     return this._afAuth
-      .createUserWithEmailAndPassword(email, password)
+      .createUserWithEmailAndPassword(body.email, body.password)
       .then((result) => {
         /* Call the SendVerificaitonMail() function when new user sign 
         up and returns promise */
@@ -79,7 +81,7 @@ export class AuthenticationService {
   }
   // Returns true when user is looged in and email is verified
   get isLoggedIn(): boolean {
-    const user = JSON.parse(localStorage.getItem('user')!);
+    const user = JSON.parse(localStorage.getItem(AuthStringConstants.LOCAL_STORAGE_CONSTANTS.USER)!);
     return user !== null && user.emailVerified !== false ? true : false;
   }
   // Sign in with Google
@@ -111,7 +113,7 @@ export class AuthenticationService {
     const userRef: AngularFirestoreDocument<any> = this._afs.doc(
       `users/${user.uid}`
     );
-    const userData: User = {
+    const userData: UserInterface = {
       uid: user.uid,
       email: user.email,
       displayName: user.displayName,
@@ -125,8 +127,8 @@ export class AuthenticationService {
   // Sign out
   SignOut() {
     return this._afAuth.signOut().then(() => {
-      localStorage.removeItem('user');
+      localStorage.removeItem(AuthStringConstants.LOCAL_STORAGE_CONSTANTS.USER);
       this._router.navigate(['/features/login']);
-    });
+    }).catch((err) => {console.log(err.message)});
   }
 }

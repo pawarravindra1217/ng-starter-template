@@ -1,33 +1,48 @@
-<div class="displayTable">
-    <div class="displayTableCell">
-      <div class="authBlock">
-        <h3>Sign In</h3>
-        <div class="formGroup">
-          <input type="text" class="formControl" placeholder="Username" #userName required>
+
+  <div class="background">
+    <div class="card-overlay">
+      <div class="login-container row">
+        <div class="text-container col-sm-4">
+          <h1>Hey Stranger</h1>
+          <p>
+            Want to create an awesome account to access this awesome app? Go ahead
+            and click the button below!
+          </p>
+          <button class="sign-up-btn" mat-button routerLink="/features/register">Sign up</button>
         </div>
-        <div class="formGroup">
-          <input type="password" class="formControl" placeholder="Password" #userPassword required>
-        </div>
-        <!-- Calling SignIn Api from AuthService -->
-        <div class="formGroup">
-          <input type="button" class="btn btnPrimary" value="Log in" (click)="_authService.SignIn(userName.value, userPassword.value)">
-        </div>
-        <div class="formGroup">
-          <span class="or"><span class="orInner">Or</span></span>
-        </div>
-        <!-- Calling GoogleAuth Api from AuthService -->
-        <div class="formGroup">
-          <button type="button" class="btn googleBtn" (click)="_authService.GoogleAuth()">
-            <i class="fab fa-google-plus-g"></i>
-            Log in with Google
+        <div class="form-container col-sm-8">
+          <h1>Welcome to Login</h1>
+          <button class="mat-raised-button" (click)="_authService.GoogleAuth()">
+            Sign In with Google
           </button>
+          <h5>Or sign in with your email</h5>
+          <form class="form" [formGroup]="form" (ngSubmit)="onSubmit()">
+            <mat-form-field>
+              <mat-label>Email</mat-label>
+              <input matInput formControlName="email" type="text"  required />
+              <mat-error *ngIf="email?.hasError('required')">
+                Email is required
+              </mat-error>
+              <mat-error *ngIf="email?.hasError('email')">
+                Email isn't valid. Please enter a valid email.
+              </mat-error>
+            </mat-form-field>
+            <mat-form-field>
+              <mat-label>Password</mat-label>
+              <input matInput formControlName="password" type="password"  required />
+              <mat-error *ngIf="password?.hasError('required')">
+                Password is required
+              </mat-error>
+            </mat-form-field>
+            <div class="form-footer">
+              <button class="sign-up-btn" [disabled]="form.invalid" mat-raised-button type="submit">
+                Submit
+              </button>
+            </div>
+          </form>
         </div>
-        <div class="forgotPassword">
-          <span routerLink="/features/forgot-password">Forgot Password?</span>
-        </div>
-      </div>
-      <div class="redirectToLogin">
-        <span>Don't have an account?<span class="redirect" routerLink="/features/register"> Sign Up</span></span>
       </div>
     </div>
+
   </div>
+

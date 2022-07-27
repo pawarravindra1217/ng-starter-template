@@ -1,0 +1,112 @@
+.sign-up-btn {
+    background-color: #5eccd6;
+    border-radius: 20px;
+    color: #fff;
+    padding: 0 50px;
+  }
+  
+  .form {
+    min-width: 150px;
+    max-width: 500px;
+    width: 70%;
+  }
+  
+  mat-form-field {
+    width: 100%;
+  }
+
+  a {
+    color: #838383;
+    margin-top: 30px;
+    text-decoration: none;
+  }
+  
+  h1 {
+    color: #5eccd6;
+    font-weight: bolder;
+  }
+  
+  h5 {
+    color: #838383;
+  }
+  
+  button {
+    border-radius: 20px;
+    margin: 20px;
+    padding: 0 50px;
+  }
+  
+  p {
+    margin-bottom: 20px;
+    text-align: center;
+  }
+  
+  .background {
+    justify-content: center;
+    align-items: center;
+    background-image: url('/assets/images/bg.jpg');
+    box-sizing: border-box;
+    display: flex;
+    height: 100vh;
+    background-size: cover;
+    background-repeat: no-repeat;
+    width: 100%;
+  }
+  
+  .login-container {
+    border-radius: 10px;
+    box-shadow: 0 0 13px 0px #a3a3a3;
+    display: flex;
+    // width: 60%;
+    max-width: 60%;
+  }
+  
+  .card-overlay {
+    display: flex;
+    align-items: center;
+    background: rgb(0 0 0 / 11%);
+    height: 100vh;
+    width: 100%;
+    justify-content: center;
+  }
+  .text-container {
+    align-items: center;
+    background-color: #5eccd6;
+    border-radius: 0px 10px 10px 0px;
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 50px;
+    // width: 30%;
+  }
+  
+  .form-container {
+    align-items: center;
+    background-color: #fff;
+    border-radius: 10px 0px 0px 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 80px;
+    // width: 70%;
+  }
+  
+  .text-container h1 {
+    color: #fff;
+  }
+  
+  .text-container button {
+    background-color: transparent;
+    border: 1px solid #fff;
+  }
+
+  input.ng-invalid.ng-touched {
+    border: none !important;
+  }
+
+  .form-footer {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+  }

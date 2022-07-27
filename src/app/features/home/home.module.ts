@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 
 import { HomeRoutingModule } from './home-routing.module';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
-
+import { MatToolbarModule } from '@angular/material/toolbar';
 
 @NgModule({
   declarations: [
@@ -11,7 +11,8 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
   ],
   imports: [
     CommonModule,
-    HomeRoutingModule
+    HomeRoutingModule,
+    MatToolbarModule 
   ]
 })
 export class HomeModule { }

@@ -1,60 +1,11 @@
-<!-- Top navigation -->
-<nav class="navbar navbar-dark fixed-top bg-dark flex-md-nowrap p-0 shadow">
-    <a class="navbar-brand col-sm-3 col-md-2 mr-0">
-      <img class="brand-logo" src="{{ASSETS_LINK.ANGULAR_LOGO}}" alt="Angular Starter Logo">
-    </a>
-  </nav>
-  <!-- Sidebar navigation -->
-  <div class="container-fluid">
-    <div class="row">
-      <nav class="col-md-2 d-md-block bg-light sidebar">
-        <div class="sidebar-sticky">
-          <ul class="nav flex-column">
-            <li class="nav-item">
-              <a class="nav-link active">
-                <i class="fas fa-user"></i>User Profile
-              </a>
-            </li>
-            <!-- Calling SignOut() Api from AuthService -->
-            <li class="nav-item">
-              <a class="nav-link" (click)="_authService.SignOut()">
-                <i class="fas fa-sign-out-alt"></i>Log out
-              </a>
-            </li>
-          </ul>
-        </div>
-      </nav>
-      <!-- Main content -->
-      <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
-        <div class="inner-adjust">
-          <div class="pt-3 pb-2 mb-3 border-bottom">
-            <h1 class="h2">User Profile</h1>
-          </div>
-          <!-- Show user data when logged in -->
-          <div class="row" *ngIf="_authService.userData as user">
-            <div class="col-md-12">
-              <div class="media">
-                <img class="align-self-start mr-5 img-thumbnail rounded-circle" 
-                     src="{{ASSETS_LINK.DUMMY_USER}}"
-                     alt="{{user.displayName}}">
-                <div class="media-body">
-                  <h1>Hello: <strong>{{(user.displayName) ? user.displayName : 'User'}}</strong></h1>
-                  <p>User ID: <strong>{{user.uid}}</strong></p>
-                  <p>Email: <strong>{{user.email}}</strong></p>
-                  <p>Email Verified: <strong>{{user.emailVerified}}</strong></p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </main>
-    </div>
-  </div>
 
 
-  <div *ngFor="let employee of employees">
-    <label>Id: {{employee.id}}</label>
-    <label>Name: {{employee.employee_name}}</label>
-    <label>Age: {{employee.employee_age}}</label>
-    <label>Salary: {{employee.employee_salary}}</label>
-  </div>
+  <mat-toolbar><a (click)="_authService.SignOut();">Log out</a></mat-toolbar>
+<div class="background">
+  <h1>Welcome to the Dashboard</h1>
+  <h2>Built with &lt;3 by Ravindra S. Pawar</h2>
+
+  <a target="_blank" class="btn" href="https://github.com/pawarravindra1217/ng-starter-template">
+    Click here to view the source code
+  </a>
+</div>

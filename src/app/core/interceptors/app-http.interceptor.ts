@@ -14,16 +14,16 @@ export class AppHttpInterceptor implements HttpInterceptor {
   constructor(private localStorageService: LocalStorageService) {}
 
   intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
-    request = request.clone({
-      headers: request.headers
-                      .set('Content-Type', 'application/json')
+    // request = request.clone({
+    //   headers: request.headers
+    //                   .set('Content-Type', 'application/json')
                     // add multiple headers in every http request by appending .set method with header value 
                     // of http headers class
                       // .set('header2','header2Value')
                       // .set('header3','header3Value')
                       // .set('header4','header4Value')
                      
-    });
+    // });
     
     // also we can add headers by below shortcut method
       // request = request.clone({

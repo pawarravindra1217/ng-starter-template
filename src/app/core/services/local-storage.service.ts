@@ -1,9 +1,10 @@
 import { Injectable } from '@angular/core';
+import { LocalStorageServiceInterface } from '../interfaces/local-storage-service-interface';
 
 @Injectable({
   providedIn: 'root'
 })
-export class LocalStorageService {
+export class LocalStorageService implements LocalStorageServiceInterface {
 
   constructor() { }
 

@@ -10,7 +10,12 @@ const routes: Routes = [
   {
     path:'features',
     loadChildren:() => import('./features/features.module').then(m => m.FeaturesModule)
-  }
+  },
+  {
+    path: '**',
+    redirectTo: '',
+    pathMatch: 'full',
+  },
 ];
 
 @NgModule({

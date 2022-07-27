@@ -2,12 +2,13 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { map, Observable } from 'rxjs';
 import { DTOFormatter } from '../interfaces/dto-formatter';
+import { HttpServiceInterface } from '../interfaces/http-service-interface';
 import { Resource } from '../models/Resource';
 
 @Injectable({
   providedIn: 'root'
 })
-export class HttpService<T extends Resource> {
+export class HttpService<T extends Resource> implements HttpServiceInterface<T> {
 
   constructor(private httpClient: HttpClient) { }
 
@@ -35,11 +36,11 @@ export class HttpService<T extends Resource> {
             .pipe(map(data => dataFormatter.formatGetData(data) as T));
   }
 
-  delete(url: string){
-    this.httpClient.delete(url);
+  delete(url: string): Observable<T>{
+    return this.httpClient.delete<T>(url);
   }
 
-  private convertData(data: any, dataFormatter: DTOFormatter): T[] {
+  convertData(data: any, dataFormatter: DTOFormatter): T[] {
     return data.map((item: T) => dataFormatter.formatGetData(item));
   }
 }

@@ -8,7 +8,9 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ForgotPasswordComponent } from './components/forgot-password/forgot-password.component';
 import { VerifyEmailAddressComponent } from './components/verify-email-address/verify-email-address.component';
 import { AuthenticationService } from './services/authentication.service';
-
+import { MatButtonModule } from '@angular/material/button';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
 @NgModule({
   declarations: [
     LoginComponent,
@@ -20,7 +22,10 @@ import { AuthenticationService } from './services/authentication.service';
     CommonModule,
     AuthRoutingModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatInputModule,
+    MatFormFieldModule,
+    MatButtonModule,
   ],
   providers: [AuthenticationService],
 })
