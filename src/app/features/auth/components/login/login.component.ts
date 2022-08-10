@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AuthenticationService } from '../../services/authentication.service';
-
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -27,5 +26,8 @@ export class LoginComponent implements OnInit {
   }
   onSubmit(){
     this._authService.SignIn(this.form.value)
+  }
+  localError() {
+    throw Error("The app component has thrown an error!");
   }
 }
