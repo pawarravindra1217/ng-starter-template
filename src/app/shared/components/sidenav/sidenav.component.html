@@ -1,0 +1,26 @@
+<div [ngClass]="isHorizontalNav === 1 ? 'section2' : 'section'">
+    <div class="logo">
+        <a href="#"><span>R</span>avindra</a>
+    </div>
+    <div>
+        <ul class="nav d-block">
+            <li *ngFor="let item of sidenavItems" >
+                <a  [routerLink]="[item.pageRoute]" routerLinkActive="active">
+                    <i *ngIf="isHorizontalNav != 1" [class]="item?.icon"></i> {{item?.name}}
+                </a>
+            </li>
+        </ul>
+    </div>
+    <div class="operations" >
+        <div class="day-night s-icon" [ngClass]="isHorizontalNav === 1 ? '' : 'd-flex'">
+            <!-- <i class="fa fa-cog" aria-hidden="true"></i> -->
+            <i (click)="this.themeService?.toggleTheme()" *ngIf="this.themeService?.isDarkTheme" class="fa fa-sun-o dark"></i>
+            <i (click)="this.themeService?.toggleTheme()" *ngIf="!this.themeService?.isDarkTheme" class="fa fa-moon-o"></i>
+            <i class="fa fa-columns" aria-hidden="true" (click)="changelayout()"></i>
+            <i class="fa fa-linkedin" aria-hidden="true"></i>
+            <i class="fa fa-github"></i>
+            <i class="fa fa-medium"></i>
+            <!-- <button (click)="changelayout()">Change Layout</button> -->
+        </div>
+    </div>
+</div>

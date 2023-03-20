@@ -6,7 +6,7 @@ declare let Email: any;
   providedIn: 'root'
 })
 export class EmailService {
-
+Email: any
   constructor() { }
   
   sendErrorOccuredEmail(body: string): void{
